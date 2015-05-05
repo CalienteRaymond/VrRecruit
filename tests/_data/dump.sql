@@ -35,8 +35,13 @@ LOCK TABLES `schema_migrations` WRITE;
 
 INSERT INTO `schema_migrations` (`version`)
 VALUES
-	('20140119094657'),
-	('20140120120350');
+  ('20140119094657'),
+  ('20140120120350'),
+  ('20140120145548'),
+  ('20150504150623'),
+  ('20150504150800'),
+  ('20150505090728'),
+  ('20150505090737');
 
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -54,6 +59,36 @@ CREATE TABLE `tasks` (
   `updated_at` datetime DEFAULT NULL,
   `assigned_name` text,
   `assigned_phone` text,
+  `description` text,
+  `state` tinyint(4) DEFAULT 0,
+  `complete_claimed` tinyint(4) DEFAULT 0,
+  `complete_confirmed` tinyint(4) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `tasksactions`;
+
+CREATE TABLE `tasksactions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `task_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `description` text,
+  `message` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+# Affichage de la table twiliorequests
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `twiliorequests`;
+
+CREATE TABLE `twiliorequests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `To` text DEFAULT NULL,
+  `Body` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

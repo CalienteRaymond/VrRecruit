@@ -1,0 +1,20 @@
+<h4>
+Actions for task : <i>{{item.description}}</i>
+</h4>
+<div class="row" ng-repeat="taskaction in taskactions">
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <h5 class="panel-title">{{taskaction.description}}</h5>
+  </div>
+  <div class="panel-body">
+    <small>Recieved: {{currentDate(taskaction.created_at)}}</small>
+    <p>Message: {{taskaction.message}}</p>
+  </div>
+</div>
+
+</div>
+<div class="row text-center">
+  <button class="btn" ng-click="ok()">Close</button>
+</div> 
+
+

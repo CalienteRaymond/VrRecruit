@@ -12,6 +12,7 @@
     <th>Deadline</th>
     <th>Assignee</th>
     <th>Phone</th>
+    <th>State</th>
     <th></th>
     <th></th>
     <th></th>
@@ -22,8 +23,10 @@
     <td>{{task.deadline}}</td>
     <td>{{task.assigned_name}}</td>
     <td>{{task.assigned_phone}}</td>
+    <td ng-class="{'task-accepted':  task.state_i == 1, 'task-refused': task.state_i == 2}">{{task.state_description}}</td>
+    <td><span ng-if="task.complete_claimed == 1" class="label label-info">Assignee claim it's complete</span></td>
     <td>
-      <a href="" class="btn" disabled>
+      <a href="" class="btn" ng-click="open(task)">
         Show
       </a>
     </td>

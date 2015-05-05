@@ -2596,3 +2596,16 @@ table thead th.sort-table a {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 3px;
 }
+
+/* Related to task list */
+.modal-content {
+  padding:30px;
+}
+
+.task-accepted {
+  color:green;
+}
+
+.task-refused {
+  color:red;
+}

@@ -10,7 +10,7 @@ modules:
             user: 'ubuntu'
             password: ''
             dump: tests/_data/dump.sql
-            populate: true
+            populate: false
             cleanup: false
         ZF1:
             env: 'test'

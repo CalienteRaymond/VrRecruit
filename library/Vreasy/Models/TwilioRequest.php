@@ -4,34 +4,28 @@ namespace Vreasy\Models;
 
 use Vreasy\Query\Builder;
 
-class Task extends Base
+class TwilioRequest extends Base
 {
     // Protected attributes should match table columns
     protected $id;
-    protected $deadline;
-    protected $assigned_name;
-    protected $assigned_phone;
     protected $created_at;
-    protected $updated_at;
-    protected $description;             // What is the task dedicated to ?
-    protected $state;                   // Pending, accepted, refused (exclusive)
-    protected $complete_claimed;        // Has the provider claimed he finish the job ?
-    protected $complete_confirmed;      // has the provider actually finished the job ?
-
+    protected $To;
+    protected $Body;
+    
     public function __construct()
     {
         // Validation is done run by Valitron library
         $this->validates(
             'required',
-            ['deadline', 'assigned_name', 'assigned_phone']
+            ['To']
         );
         $this->validates(
             'date',
-            ['created_at', 'updated_at']
+            ['created_at']
         );
         $this->validates(
             'integer',
-            ['id', 'state', 'complete_claimed', 'complete_confirmed']
+            ['id']
         );
     }
 
@@ -42,11 +36,11 @@ class Task extends Base
             $this->updated_at = gmdate(DATE_FORMAT);
             if ($this->isNew()) {
                 $this->created_at = $this->updated_at;
-                static::insert('tasks', $this->attributesForDb());
+                static::insert('twiliorequests', $this->attributesForDb());
                 $this->id = static::lastInsertId();
             } else {
                 static::update(
-                    'tasks',
+                    'twiliorequests',
                     $this->attributesForDb(),
                     ['id = ?' => $this->id]
                 );
@@ -57,7 +51,7 @@ class Task extends Base
 
     public static function findOrInit($id)
     {
-        $task = new Task();
+        $task = new TwilioRequest();
         if ($tasksFound = static::where(['id' => (int)$id])) {
             $task = array_pop($tasksFound);
         }
@@ -84,7 +78,7 @@ class Task extends Base
             ['wildcard' => true, 'prefix' => 't.']);
 
         // Select header
-        $select = "SELECT t.* FROM tasks AS t";
+        $select = "SELECT t.* FROM twiliorequests AS t";
 
         // Build order by
         foreach ($orderBy as $i => $value) {

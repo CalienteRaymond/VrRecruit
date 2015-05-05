@@ -30,7 +30,7 @@
     "require": {
         "zendframework/zendframework1": "1.12.3",
         "ruckusing/ruckusing-migrations": "dev-master#6c7a26ccd96a4ac980f3fc47c6645458ed918406",
-        "vlucas/valitron": "dev-master#8c34a03",
+        "vlucas/valitron": "*.dev",
         "yohang/finite": "1.0.*@dev",
         "phpactiveresource/phpactiveresource": "*",
         "guzzle/guzzle": "3.7.x",
@@ -43,7 +43,7 @@
     },
     "require-dev": {
         "codeception/codeception": "dev-master#1b3ccc901a968c8220ef4708869cac6575298ef0",
-        "magento/community-edition": "dev-master#b3d69492524f482c76ea512888ef2fbc1412a3c0"
+        "magento/community-edition": "dev-master#4393143e925cb855e8a427101b6c957f4f78885b"
     },
     "autoload": {
         "psr-0": { "": ["library/"] }

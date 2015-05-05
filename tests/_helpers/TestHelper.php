@@ -4,6 +4,8 @@ namespace Codeception\Module;
 
 use Codeception\TestCase;
 use Vreasy\Models\Task;
+use Vreasy\Models\Taskaction;
+use Vreasy\Models\TwilioRequest;
 
 // here you can define custom functions for TestGuy
 class TestHelper extends \Codeception\Util\Framework
